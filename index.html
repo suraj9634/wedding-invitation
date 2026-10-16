@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suraj & Ankita — Wedding Invitation</title>
   
-  <!-- Changed link type to force the browser to update your background photo -->
-  <link rel="stylesheet" href="style.css?v=2" />
-  
+  <link rel="stylesheet" href="style.css?v=3" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- Screen 1: Simple Photo Intro -->
+  <!-- Screen 1: Simple Photo Intro (Photo forced inline to bypass cache) -->
   <section id="intro-screen">
-    <div class="bg-container">
+    <div class="bg-container" style="background: linear-gradient(rgba(42, 27, 45, 0.7), rgba(42, 27, 45, 0.7)), url('bg.jpg') center/cover no-repeat;">
       <div class="top-mantra">
         <div style="font-size: 1.2rem; margin-bottom: 5px;">ॐ</div>
         श्री गणेशाय नमः
@@ -36,12 +34,14 @@
     </div>
   </section>
 
-  <!-- Main Scrolling Invitation (Initially Hidden) -->
+  <!-- Main Scrolling Invitation -->
   <main id="main-content" class="hidden">
     
-    <!-- Video Hero Section (Scrolls away) -->
+    <!-- Video Hero Section -->
     <section class="video-hero">
       <video autoplay loop muted playsinline class="bg-video" id="bgVideo">
+        <!-- Bulletproof video sources: checks for both uppercase and lowercase! -->
+        <source src="video.MP4" type="video/mp4">
         <source src="video.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>
@@ -62,8 +62,6 @@
 
     <!-- The rest of the invitation cards -->
     <div class="card-container">
-      
-      <!-- Screen 1 Inner: Welcome & Names -->
       <section class="card center">
         <p class="sanskrit">|| श्री गणेशाय नमः ||</p>
         <h2 class="sub-lead">We are honored to invite you to the wedding of</h2>
@@ -74,7 +72,6 @@
         <p class="family-detail">Daughter of Mrs. Manju Saini & Mr. Suresh Chand Saini</p>
       </section>
 
-      <!-- Screen 2: Scratch to Reveal Date & Live Countdown -->
       <section class="card center">
         <h2>Scratch to Reveal Date</h2>
         <div class="scratch-container">
@@ -84,7 +81,6 @@
             <h3>November 21, 2026</h3>
           </div>
         </div>
-
         <div class="countdown-container">
           <h3>Counting Down to Forever</h3>
           <div id="countdown" class="countdown-grid">
@@ -96,16 +92,13 @@
         </div>
       </section>
 
-      <!-- Screen 3 & 4: Timeline of Events -->
       <section class="card">
         <h2 class="section-title">Program Timeline</h2>
-        
         <div class="timeline-group">
           <h3>Friday, November 20, 2026</h3>
           <p><strong>11:00 AM:</strong> Mehendi</p>
           <p><strong>02:00 PM:</strong> Sundarkand Path & Mahila Sangeet (Residence)</p>
         </div>
-
         <div class="timeline-group">
           <h3>Saturday, November 21, 2026</h3>
           <p><strong>08:30 AM:</strong> Ganesh Pujan</p>
@@ -114,14 +107,12 @@
           <p><strong>06:00 PM:</strong> Barat Departure</p>
           <p><strong>Night:</strong> Vivah Sanskar (Shubh Lagna)</p>
         </div>
-
         <div class="timeline-group">
           <h3>Sunday, November 22, 2026</h3>
           <p><strong>Night:</strong> Reception Party (07:30 PM)</p>
         </div>
       </section>
 
-      <!-- Screen 5: Venues & Map Links -->
       <section class="card center">
         <h2 class="section-title">Wedding Venues</h2>
         <div class="venue-box">
@@ -130,7 +121,6 @@
           <small>Barat will assemble near DS Motors, Amwala</small>
           <a class="btn-map" href="https://maps.google.com/?q=Kesar+Wedding+Farm+Dehradun" target="_blank">View on Google Maps</a>
         </div>
-
         <div class="venue-box">
           <h3>Pre-Wedding & Reception</h3>
           <p>Indraprasth, Lane No.-13, Upper Nathanpur, Dehradun</p>
@@ -138,7 +128,6 @@
         </div>
       </section>
 
-      <!-- Screen 6: Free RSVP Form (Formspree) -->
       <section class="card center">
         <h2 class="section-title">RSVP & Wishes</h2>
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="rsvp-form">
@@ -152,16 +141,13 @@
           <button type="submit" class="btn-submit">Send RSVP</button>
         </form>
       </section>
-      
     </div>
   </main>
 
-  <!-- Background Music Player -->
   <audio id="wedding-music" loop>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Embedded JavaScript to Bypass Cache -->
   <script>
     document.getElementById('openBtn').addEventListener('click', function() {
       const introScreen = document.getElementById('intro-screen');
@@ -169,26 +155,17 @@
       const bgMusic = document.getElementById('wedding-music');
       const bgVideo = document.getElementById('bgVideo');
 
-      if (bgMusic) {
-        bgMusic.play().catch(error => console.log("Audio waiting"));
-      }
-      
-      if (bgVideo) {
-        bgVideo.play().catch(error => console.log("Video missing or waiting"));
-      }
+      if (bgMusic) { bgMusic.play().catch(e => console.log("Audio waiting")); }
+      if (bgVideo) { bgVideo.play().catch(e => console.log("Video waiting")); }
 
       if (introScreen) {
         introScreen.style.opacity = '0';
-        setTimeout(() => {
-          introScreen.style.display = 'none';
-        }, 800); 
+        setTimeout(() => { introScreen.style.display = 'none'; }, 800); 
       }
-      
       if (mainContent) {
         mainContent.classList.remove('hidden');
         mainContent.style.display = 'block';
       }
-      
       window.scrollTo({ top: 0, behavior: 'auto' });
     });
 
@@ -213,7 +190,6 @@
         ctx.arc(x, y, 18, 0, Math.PI * 2, false);
         ctx.fill();
       }
-
       canvas.addEventListener('mousedown', () => isDrawing = true);
       canvas.addEventListener('mouseup', () => isDrawing = false);
       canvas.addEventListener('mousemove', scratch);
@@ -225,17 +201,15 @@
     const countdownContainer = document.getElementById('countdown');
     if (countdownContainer) {
       const weddingDate = new Date('November 21, 2026 18:00:00').getTime();
-      const timer = setInterval(() => {
+      setInterval(() => {
         const now = new Date().getTime();
         const diff = weddingDate - now;
-        if (diff < 0) {
-          clearInterval(timer);
-          return;
+        if (diff > 0) {
+          document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+          document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
         }
-        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
       }, 1000);
     }
   </script>
