@@ -138,4 +138,110 @@
       <!-- Screen 6: Free RSVP Form (Formspree) -->
       <section class="card center">
         <h2 class="section-title">RSVP & Wishes</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="rsvp-form">
+          <input type="text" name="guest_name" placeholder="Your Full Name" required />
+          <select name="attendance" required>
+            <option value="" disabled selected>Will you be attending?</option>
+            <option value="Joyfully Accept">Joyfully Accept</option>
+            <option value="Regretfully Decline">Regretfully Decline</option>
+          </select>
+          <textarea name="message" placeholder="Warm wishes or blessings..." rows="3"></textarea>
+          <button type="submit" class="btn-submit">Send RSVP</button>
+        </form>
+      </section>
+      
+    </div>
+  </main>
+
+  <!-- Background Music Player -->
+  <audio id="wedding-music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Embedded JavaScript to Bypass Cache -->
+  <script>
+    // 1. Open Button Click, Music & Video Trigger
+    document.getElementById('openBtn').addEventListener('click', function() {
+      const introScreen = document.getElementById('intro-screen');
+      const mainContent = document.getElementById('main-content');
+      const bgMusic = document.getElementById('wedding-music');
+      const bgVideo = document.getElementById('bgVideo');
+
+      // Start music safely
+      if (bgMusic) {
+        bgMusic.play().catch(error => console.log("Audio waiting"));
+      }
+      
+      // Start video safely (if it exists)
+      if (bgVideo) {
+        bgVideo.play().catch(error => console.log("Video missing or waiting"));
+      }
+
+      // Hide intro screen
+      if (introScreen) {
+        introScreen.style.opacity = '0';
+        setTimeout(() => {
+          introScreen.style.display = 'none';
+        }, 800); 
+      }
+      
+      // Show main content
+      if (mainContent) {
+        mainContent.classList.remove('hidden');
+        mainContent.style.display = 'block';
+      }
+      
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    });
+
+    // 2. Scratch-to-Reveal Logic
+    const canvas = document.getElementById('scratchCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#C0A062';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '16px Montserrat';
+      ctx.fillText('Scratch here', 90, 65);
+
+      let isDrawing = false;
+      function scratch(e) {
+        if (!isDrawing) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 18, 0, Math.PI * 2, false);
+        ctx.fill();
+      }
+
+      canvas.addEventListener('mousedown', () => isDrawing = true);
+      canvas.addEventListener('mouseup', () => isDrawing = false);
+      canvas.addEventListener('mousemove', scratch);
+      canvas.addEventListener('touchstart', () => isDrawing = true, {passive: true});
+      canvas.addEventListener('touchend', () => isDrawing = false);
+      canvas.addEventListener('touchmove', scratch, {passive: true});
+    }
+
+    // 3. Countdown Timer
+    const countdownContainer = document.getElementById('countdown');
+    if (countdownContainer) {
+      const weddingDate = new Date('November 21, 2026 18:00:00').getTime();
+      const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
+        if (diff < 0) {
+          clearInterval(timer);
+          return;
+        }
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
