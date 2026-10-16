@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suraj & Ankita — Wedding Invitation</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Screen 1: Envelope Intro -->
+  <section id="envelope-screen" class="screen center">
+    <div class="envelope-wrapper" id="envelope">
+      <div class="envelope-flap"></div>
+      <div class="seal" id="waxSeal">
+        <span>Tap to Open</span>
+      </div>
+      <div class="envelope-base"></div>
+    </div>
+  </section>
+
+  <!-- Main Scrolling Invitation (Initially Hidden) -->
+  <main id="main-content" class="hidden">
+    
+    <!-- Screen 1 Inner: Welcome & Names -->
+    <section class="card center">
+      <p class="sanskrit">|| श्री गणेशाय नमः ||</p>
+      <h2 class="sub-lead">We are honored to invite you to the wedding of</h2>
+      <h1 class="couple-name">Suraj</h1>
+      <p class="family-detail">Son of Mrs. Meenu Rawat & Mr. Sunil Rawat</p>
+      <div class="ampersand">&</div>
+      <h1 class="couple-name">Ankita</h1>
+      <p class="family-detail">Daughter of Mrs. Manju Saini & Mr. Suresh Chand Saini</p>
+    </section>
+
+    <!-- Screen 2: Scratch to Reveal Date & Live Countdown -->
+    <section class="card center">
+      <h2>Scratch to Reveal Date</h2>
+      <div class="scratch-container">
+        <canvas id="scratchCanvas" width="280" height="120"></canvas>
+        <div class="scratch-secret">
+          <p>Save The Date</p>
+          <h3>November 21, 2026</h3>
+        </div>
+      </div>
+
+      <div class="countdown-container">
+        <h3>Counting Down to Forever</h3>
+        <div id="countdown" class="countdown-grid">
+          <div><span id="days">00</span><small>Days</small></div>
+          <div><span id="hours">00</span><small>Hours</small></div>
+          <div><span id="minutes">00</span><small>Mins</small></div>
+          <div><span id="seconds">00</span><small>Secs</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 3 & 4: Timeline of Events -->
+    <section class="card">
+      <h2 class="section-title">Program Timeline</h2>
+      
+      <div class="timeline-group">
+        <h3>Friday, November 20, 2026</h3>
+        <p><strong>11:00 AM:</strong> Mehendi</p>
+        <p><strong>02:00 PM:</strong> Sundarkand Path & Mahila Sangeet (Residence)</p>
+      </div>
+
+      <div class="timeline-group">
+        <h3>Saturday, November 21, 2026</h3>
+        <p><strong>08:30 AM:</strong> Ganesh Pujan</p>
+        <p><strong>09:00 AM:</strong> Haldi Hath (Baan)</p>
+        <p><strong>09:30 AM:</strong> Mangal Snan</p>
+        <p><strong>06:00 PM:</strong> Barat Departure</p>
+        <p><strong></strong> Vivah Sanskar (Shubh Lagna)</p>
+      </div>
+
+      <div class="timeline-group">
+        <h3>Sunday, November 22, 2026</h3>
+        <p><strong></strong> Reception Party (07:30 PM)</p>
+      </div>
+    </section>
+
+    <!-- Screen 5: Venues & Map Links -->
+    <section class="card center">
+      <h2 class="section-title">Wedding Venues</h2>
+      <div class="venue-box">
+        <h3>Wedding Ceremony</h3>
+        <p>Kesar Wedding Farm, Amwala, Dehradun</p>
+        <small>Barat will assemble near DS Motors, Amwala</small>
+        <a class="btn-map" href="https://maps.google.com/?q=Kesar+Wedding+Farm+Dehradun" target="_blank">View on Google Maps</a>
+      </div>
+
+      <div class="venue-box">
+        <h3>Mendhi, Haldi,Reception</h3>
+        <p>Indraprasth, Lane No.-13, Upper Nathanpur, Dehradun</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/F4xoJiHWDxHTxXEx6?g_st=ic" target="_blank">View on Google Maps</a>
+      </div>
+    </section>
+
+    <!-- Screen 6: Free RSVP Form (Formspree) -->
+    <section class="card center">
+      <h2 class="section-title">RSVP & Wishes</h2>
+      <!-- Replace 'YOUR_FORM_ID' with a free Formspree.io ID -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="rsvp-form">
+        <input type="text" name="guest_name" placeholder="Your Full Name" required />
+        <select name="attendance" required>
+          <option value="" disabled selected>Will you be attending?</option>
+          <option value="Joyfully Accept">Joyfully Accept</option>
+          <option value="Regretfully Decline">Regretfully Decline</option>
+        </select>
+        <textarea name="message" placeholder="Warm wishes or blessings..." rows="3"></textarea>
+        <button type="submit" class="btn-submit">Send RSVP</button>
+      </form>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
