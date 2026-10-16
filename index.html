@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suraj & Ankita — Wedding Invitation</title>
-  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Changed link type to force the browser to update your background photo -->
+  <link rel="stylesheet" href="style.css?v=2" />
+  
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -160,24 +163,20 @@
 
   <!-- Embedded JavaScript to Bypass Cache -->
   <script>
-    // 1. Open Button Click, Music & Video Trigger
     document.getElementById('openBtn').addEventListener('click', function() {
       const introScreen = document.getElementById('intro-screen');
       const mainContent = document.getElementById('main-content');
       const bgMusic = document.getElementById('wedding-music');
       const bgVideo = document.getElementById('bgVideo');
 
-      // Start music safely
       if (bgMusic) {
         bgMusic.play().catch(error => console.log("Audio waiting"));
       }
       
-      // Start video safely (if it exists)
       if (bgVideo) {
         bgVideo.play().catch(error => console.log("Video missing or waiting"));
       }
 
-      // Hide intro screen
       if (introScreen) {
         introScreen.style.opacity = '0';
         setTimeout(() => {
@@ -185,7 +184,6 @@
         }, 800); 
       }
       
-      // Show main content
       if (mainContent) {
         mainContent.classList.remove('hidden');
         mainContent.style.display = 'block';
@@ -194,7 +192,6 @@
       window.scrollTo({ top: 0, behavior: 'auto' });
     });
 
-    // 2. Scratch-to-Reveal Logic
     const canvas = document.getElementById('scratchCanvas');
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -225,7 +222,6 @@
       canvas.addEventListener('touchmove', scratch, {passive: true});
     }
 
-    // 3. Countdown Timer
     const countdownContainer = document.getElementById('countdown');
     if (countdownContainer) {
       const weddingDate = new Date('November 21, 2026 18:00:00').getTime();
