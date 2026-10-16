@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suraj & Ankita — Wedding Invitation</title>
-  
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=4" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- Screen 1: Simple Photo Intro (Photo forced inline to bypass cache) -->
+  <!-- Screen 1: Simple Photo Intro -->
   <section id="intro-screen">
     <div class="bg-container" style="background: linear-gradient(rgba(42, 27, 45, 0.7), rgba(42, 27, 45, 0.7)), url('bg.jpg') center/cover no-repeat;">
       <div class="top-mantra">
@@ -40,7 +39,6 @@
     <!-- Video Hero Section -->
     <section class="video-hero">
       <video autoplay loop muted playsinline class="bg-video" id="bgVideo">
-        <!-- Bulletproof video sources: checks for both uppercase and lowercase! -->
         <source src="video.MP4" type="video/mp4">
         <source src="video.mp4" type="video/mp4">
       </video>
@@ -54,7 +52,8 @@
         <h1 class="hero-title">You Are Invited To<br>Celebrate Love</h1>
       </div>
       
-      <div class="scroll-indicator">
+      <!-- Clickable Scroll Button -->
+      <div class="scroll-indicator" id="scrollBtn">
         <div class="arrow-down">↓</div>
         <p>SCROLL</p>
       </div>
@@ -148,70 +147,6 @@
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
-  <script>
-    document.getElementById('openBtn').addEventListener('click', function() {
-      const introScreen = document.getElementById('intro-screen');
-      const mainContent = document.getElementById('main-content');
-      const bgMusic = document.getElementById('wedding-music');
-      const bgVideo = document.getElementById('bgVideo');
-
-      if (bgMusic) { bgMusic.play().catch(e => console.log("Audio waiting")); }
-      if (bgVideo) { bgVideo.play().catch(e => console.log("Video waiting")); }
-
-      if (introScreen) {
-        introScreen.style.opacity = '0';
-        setTimeout(() => { introScreen.style.display = 'none'; }, 800); 
-      }
-      if (mainContent) {
-        mainContent.classList.remove('hidden');
-        mainContent.style.display = 'block';
-      }
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    });
-
-    const canvas = document.getElementById('scratchCanvas');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      ctx.fillStyle = '#C0A062';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '16px Montserrat';
-      ctx.fillText('Scratch here', 90, 65);
-
-      let isDrawing = false;
-      function scratch(e) {
-        if (!isDrawing) return;
-        const rect = canvas.getBoundingClientRect();
-        const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-        const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
-
-        ctx.globalCompositeOperation = 'destination-out';
-        ctx.beginPath();
-        ctx.arc(x, y, 18, 0, Math.PI * 2, false);
-        ctx.fill();
-      }
-      canvas.addEventListener('mousedown', () => isDrawing = true);
-      canvas.addEventListener('mouseup', () => isDrawing = false);
-      canvas.addEventListener('mousemove', scratch);
-      canvas.addEventListener('touchstart', () => isDrawing = true, {passive: true});
-      canvas.addEventListener('touchend', () => isDrawing = false);
-      canvas.addEventListener('touchmove', scratch, {passive: true});
-    }
-
-    const countdownContainer = document.getElementById('countdown');
-    if (countdownContainer) {
-      const weddingDate = new Date('November 21, 2026 18:00:00').getTime();
-      setInterval(() => {
-        const now = new Date().getTime();
-        const diff = weddingDate - now;
-        if (diff > 0) {
-          document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-          document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-          document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
-        }
-      }, 1000);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
