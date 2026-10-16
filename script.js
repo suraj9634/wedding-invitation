@@ -1,17 +1,17 @@
-// 1. Envelope Tap-to-Open Action
+// 1. Envelope Tap-to-Open Action & Music Trigger
 document.getElementById('waxSeal').addEventListener('click', () => {
+  // Open the envelope
   document.getElementById('envelope-screen').classList.add('hidden');
   document.getElementById('main-content').classList.remove('hidden');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   
-  // Start the music
-  document.getElementById('wedding-music').play();
-});
-// 1. Envelope Tap-to-Open Action
-document.getElementById('waxSeal').addEventListener('click', () => {
-  document.getElementById('envelope-screen').classList.add('hidden');
-  document.getElementById('main-content').classList.remove('hidden');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Play the music
+  const bgMusic = document.getElementById('wedding-music');
+  if (bgMusic) {
+    bgMusic.play().catch(error => {
+      console.log("Audio playback failed:", error);
+    });
+  }
 });
 
 // 2. Scratch-to-Reveal Logic
@@ -23,7 +23,7 @@ ctx.fillStyle = '#C0A062';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 ctx.fillStyle = '#ffffff';
 ctx.font = '16px Montserrat';
-ctx.fillText('Scratch here with finger', 38, 65);
+ctx.fillText('Scratch here', 90, 65);
 
 let isDrawing = false;
 function scratch(e) {
