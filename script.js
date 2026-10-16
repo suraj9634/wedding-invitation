@@ -3,6 +3,15 @@ document.getElementById('waxSeal').addEventListener('click', () => {
   document.getElementById('envelope-screen').classList.add('hidden');
   document.getElementById('main-content').classList.remove('hidden');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  // Start the music
+  document.getElementById('wedding-music').play();
+});
+// 1. Envelope Tap-to-Open Action
+document.getElementById('waxSeal').addEventListener('click', () => {
+  document.getElementById('envelope-screen').classList.add('hidden');
+  document.getElementById('main-content').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // 2. Scratch-to-Reveal Logic
