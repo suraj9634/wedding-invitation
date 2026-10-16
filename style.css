@@ -11,17 +11,11 @@ body, html {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-}
-
-body {
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 #main-content {
   width: 100%;
-  max-width: 480px;
-  padding: 20px 16px;
 }
 
 .hidden {
@@ -30,26 +24,6 @@ body {
 
 .center {
   text-align: center;
-}
-
-.card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 28px 20px;
-  margin-bottom: 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-}
-
-.couple-name {
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  color: #8c3a3e;
-}
-
-.ampersand {
-  font-size: 1.5rem;
-  margin: 4px 0;
-  color: #b58d59;
 }
 
 /* --- Simple Photo Intro Screen --- */
@@ -69,11 +43,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* Replace the URL below with your actual background photo link */
-  background: background: linear-gradient(rgba(42, 27, 45, 0.7), rgba(42, 27, 45, 0.7)), url('bg.jpg') center/cover no-repeat;
-;
   padding: 20px;
   box-sizing: border-box;
+  width: 100vw;
 }
 
 .top-mantra {
@@ -141,6 +113,143 @@ body {
 
 @media (max-width: 600px) {
   .name { font-size: 3.5rem; }
+}
+
+/* --- Video Hero Section (Full Screen & Centered) --- */
+.video-hero {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+  color: #fff;
+  text-align: center;
+}
+
+.bg-video {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.video-overlay {
+  position: absolute; 
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.35); 
+  z-index: -1;
+}
+
+.hero-content {
+  z-index: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.ganesha-icon {
+  width: 65px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0px 0px 10px rgba(255, 215, 0, 0.5));
+}
+
+.fallback-ganesha {
+  font-size: 3rem;
+  color: #FFD700;
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.ganesha-icon[src] ~ .fallback-ganesha {
+  display: none; 
+}
+
+.hero-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  color: #f2e2d2;
+  text-align: center;
+  width: 100%;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  text-align: center;
+  width: 100%;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 25px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #cda45e;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.arrow-down {
+  font-size: 1.4rem;
+  margin-bottom: 2px;
+}
+
+.scroll-indicator p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* --- Container for the lower cards --- */
+.card-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 30px 16px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.couple-name {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #8c3a3e;
+}
+
+.ampersand {
+  font-size: 1.5rem;
+  margin: 4px 0;
+  color: #b58d59;
 }
 
 /* --- Scratch Area --- */
