@@ -4,22 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suraj & Ankita — Wedding Invitation</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=23" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <!-- Screen 1: Simple Photo Intro -->
   <section id="intro-screen">
-    <div class="bg-container" style="background: linear-gradient(rgba(42, 27, 45, 0.7), rgba(42, 27, 45, 0.7)), url('bg.jpg') center/cover no-repeat;">
+    <div class="bg-container" style="background: linear-gradient(rgba(26, 5, 16, 0.75), rgba(26, 5, 16, 0.75)), url('bg.jpg') center/cover no-repeat;">
       <div class="top-mantra">
         <div style="font-size: 1.2rem; margin-bottom: 5px;">ॐ</div>
         श्री गणेशाय नमः
       </div>
     
-      <h1 class="name">Ankita</h1>
-      <div class="mid-icon">❦</div>
       <h1 class="name">Suraj</h1>
+      <div class="mid-icon">❦</div>
+      <h1 class="name">Ankita</h1>
     
       <div class="divider">
         <div class="divider-line"></div>
@@ -38,12 +38,13 @@
     
     <!-- Video Hero Section -->
     <section class="video-hero">
-      <video autoplay loop muted playsinline class="bg-video" id="bgVideo">
+      <video autoplay loop muted playsinline webkit-playsinline preload="auto" class="bg-video" id="bgVideo">
         <source src="video.MP4" type="video/mp4">
+        <source src="video.mp4" type="video/mp4">
       </video>
       <div class="video-overlay"></div>
       
-      <div class="hero-content">
+      <div class="hero-content animate-section">
         <img src="ganesha.png" alt="Ganesha" class="ganesha-icon" onerror="this.style.display='none'">
         <div class="fallback-ganesha">ॐ</div>
         
@@ -51,96 +52,261 @@
         <h1 class="hero-title">You Are Invited To<br>Celebrate Love</h1>
       </div>
       
-      <!-- Clickable Scroll Button -->
       <div class="scroll-indicator" id="scrollBtn">
         <div class="arrow-down">↓</div>
         <p>SCROLL</p>
       </div>
     </section>
 
-    <!-- The rest of the invitation cards -->
+    <!-- Natural Scrolling Container -->
     <div class="card-container">
-      <section class="card center">
-        <p class="sanskrit">|| श्री गणेशाय नमः ||</p>
-        <h2 class="sub-lead">We are honored to invite you to the wedding of</h2>
-        <h1 class="couple-name">Suraj</h1>
-        <p class="family-detail">Son of Mrs. Meenu Rawat & Mr. Sunil Rawat</p>
-        <div class="ampersand">&</div>
-        <h1 class="couple-name">Ankita</h1>
-        <p class="family-detail">Daughter of Mrs. Manju Saini & Mr. Suresh Chand Saini</p>
-      </section>
+      
+      <!-- Section 1: Welcome & Names -->
+      <div class="card center ornate-card-box animate-section">
+        <div class="corner-ornament top-left">⚜</div>
+        <div class="corner-ornament top-right">⚜</div>
+        <div class="corner-ornament bottom-left"></div>
+        <div class="corner-ornament bottom-right"></div>
+        
+        <p class="card-mantra">॥ श्री गणेशाय नमः ॥</p>
+        <h2 class="sub-lead" style="color: #e8d8c8;">We are honored to invite you to the wedding of</h2>
+        
+        <h1 class="bride-groom-name">Suraj</h1>
+        <p class="role-text">The Groom</p>
+        <p class="parent-details">S/o. Smt. Meenu Rawat & Sh. Sunil Rawat</p>
 
-      <section class="card center">
-        <h2>Scratch to Reveal Date</h2>
+        <div class="section-divider">
+          <span class="line"></span>
+          <span class="symbol">&amp;</span>
+          <span class="line"></span>
+        </div>
+
+        <h1 class="bride-groom-name">Ankita</h1>
+        <p class="role-text">The Bride</p>
+        <p class="parent-details">D/o. Smt. Manju Saini & Sh. Suresh Chand Saini</p>
+
+        <p class="blessing-text">सर्वे भवन्तु सुखिनः — May all be happy</p>
+      </div>
+
+      <!-- Section 2: Scratch Card & Countdown -->
+      <div class="card center animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <h2 class="section-title">Scratch to Reveal Date</h2>
         <div class="scratch-container">
-          <canvas id="scratchCanvas" width="280" height="120"></canvas>
           <div class="scratch-secret">
             <p>Save The Date</p>
             <h3>November 21, 2026</h3>
           </div>
+          <canvas id="scratchCanvas"></canvas>
         </div>
+
         <div class="countdown-container">
           <h3>Counting Down to Forever</h3>
           <div id="countdown" class="countdown-grid">
-            <div><span id="days">00</span><small>Days</small></div>
-            <div><span id="hours">00</span><small>Hours</small></div>
-            <div><span id="minutes">00</span><small>Mins</small></div>
-            <div><span id="seconds">00</span><small>Secs</small></div>
+            <div class="countdown-box"><span id="days">00</span><small>Days</small></div>
+            <div class="countdown-box"><span id="hours">00</span><small>Hours</small></div>
+            <div class="countdown-box"><span id="minutes">00</span><small>Mins</small></div>
+            <div class="countdown-box"><span id="seconds">00</span><small>Secs</small></div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="card">
-        <h2 class="section-title">Program Timeline</h2>
-        <div class="timeline-group">
-          <h3>Friday, November 20, 2026</h3>
-          <p><strong>11:00 AM:</strong> Mehendi</p>
-          <p><strong>02:00 PM:</strong> Sundarkand Path & Mahila Sangeet (Residence)</p>
-        </div>
-        <div class="timeline-group">
-          <h3>Saturday, November 21, 2026</h3>
-          <p><strong>08:30 AM:</strong> Ganesh Pujan</p>
-          <p><strong>09:00 AM:</strong> Haldi Hath (Baan)</p>
-          <p><strong>09:30 AM:</strong> Mangal Snan</p>
-          <p><strong>06:00 PM:</strong> Barat Departure</p>
-          <p><strong>Night:</strong> Vivah Sanskar (Shubh Lagna)</p>
-        </div>
-        <div class="timeline-group">
-          <h3>Sunday, November 22, 2026</h3>
-          <p><strong>Night:</strong> Reception Party (07:30 PM)</p>
-        </div>
-      </section>
+      <!-- FUNCTION 1: MEHENDI -->
+      <div class="card function-page animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
 
-      <section class="card center">
-        <h2 class="section-title">Wedding Venues</h2>
-        <div class="venue-box">
-          <h3>Wedding Ceremony</h3>
-          <p>Kesar Wedding Farm, Amwala, Dehradun</p>
-          <small>Barat will assemble near DS Motors, Amwala</small>
-          <a class="btn-map" href="https://maps.google.com/?q=Kesar+Wedding+Farm+Dehradun" target="_blank">View on Google Maps</a>
+        <div class="func-photo-container">
+          <img src="mendhi.jpg" alt="Mehendi" class="func-img" onerror="this.style.display='none'">
         </div>
-        <div class="venue-box">
-          <h3>Pre-Wedding & Reception</h3>
-          <p>Indraprasth, Lane No.-13, Upper Nathanpur, Dehradun</p>
-          <a class="btn-map" href="https://maps.google.com/?q=Upper+Nathanpur+Dehradun" target="_blank">View on Google Maps</a>
-        </div>
-      </section>
+        <p class="func-date">Friday, November 20, 2026</p>
+        <h2 class="func-name">Mehendi Ceremony</h2>
+        <p class="func-time">11:00 AM</p>
+        <p class="func-quote white-line">"Adorning hands with intricate bonds of love and vibrant colors."</p>
+        <a class="btn-map" href="https://goo.gl/maps/VBEDHBH1AcpvnVwLA" target="_blank">📍 View Home Location Map</a>
+      </div>
 
-      <section class="card center">
-        <h2 class="section-title">RSVP & Wishes</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="rsvp-form">
-          <input type="text" name="guest_name" placeholder="Your Full Name" required />
-          <select name="attendance" required>
-            <option value="" disabled selected>Will you be attending?</option>
-            <option value="Joyfully Accept">Joyfully Accept</option>
-            <option value="Regretfully Decline">Regretfully Decline</option>
-          </select>
-          <textarea name="message" placeholder="Warm wishes or blessings..." rows="3"></textarea>
-          <button type="submit" class="btn-submit">Send RSVP</button>
+      <!-- FUNCTION 2: SUNDARKAND & SANGEET -->
+      <div class="card function-page animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <div class="func-photo-container">
+          <img src="sangeet.jpg" alt="Sangeet" class="func-img" onerror="this.style.display='none'">
+        </div>
+        <p class="func-date">Friday, November 20, 2026</p>
+        <h2 class="func-name">Sundarkand Path & Mahila Sangeet</h2>
+        <p class="func-time">02:00 PM</p>
+        <p class="func-quote golden-line">"Let music and devotion fill our hearts with eternal joy."</p>
+        <a class="btn-map" href="https://goo.gl/maps/VBEDHBH1AcpvnVwLA" target="_blank">📍 View Home Location Map</a>
+      </div>
+
+      <!-- FUNCTION 3: GANESH PUJAN -->
+      <div class="card function-page animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <div class="func-photo-container">
+          <img src="ganesh.jpg" alt="Ganesh Pujan" class="func-img" onerror="this.style.display='none'">
+        </div>
+        <p class="func-date">Saturday, November 21, 2026</p>
+        <h2 class="func-name">Ganesh Pujan</h2>
+        <p class="func-time">08:30 AM</p>
+        <p class="func-quote white-line">"Seeking Lord Ganesha's blessings for an auspicious beginning."</p>
+        <a class="btn-map" href="https://goo.gl/maps/VBEDHBH1AcpvnVwLA" target="_blank">📍 View Home Location Map</a>
+      </div>
+
+      <!-- FUNCTION 4: HALDI HATH -->
+      <div class="card function-page animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <div class="func-photo-container">
+          <img src="haldi.jpg" alt="Haldi" class="func-img" onerror="this.style.display='none'">
+        </div>
+        <p class="func-date">Saturday, November 21, 2026</p>
+        <h2 class="func-name">Haldi Hath (Baan)</h2>
+        <p class="func-time">09:00 AM</p>
+        <p class="func-quote golden-line">"Drenched in turmeric glow, blessing the soul for new life."</p>
+        <a class="btn-map" href="https://goo.gl/maps/VBEDHBH1AcpvnVwLA" target="_blank">📍 View Home Location Map</a>
+      </div>
+
+      <!-- FUNCTION 5: MANGAL SNAN -->
+      <div class="card function-page animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <div class="func-photo-container">
+          <img src="snan.jpg" alt="Mangal Snan" class="func-img" onerror="this.style.display='none'">
+        </div>
+        <p class="func-date">Saturday, November 21, 2026</p>
+        <h2 class="func-name">Mangal Snan</h2>
+        <p class="func-time">09:30 AM</p>
+        <p class="func-quote white-line">"Purifying rituals to welcome grace and harmony."</p>
+        <a class="btn-map" href="https://goo.gl/maps/VBEDHBH1AcpvnVwLA" target="_blank">📍 View Home Location Map</a>
+      </div>
+
+      <!-- FUNCTION 6: BARAT DEPARTURE -->
+      <div class="card function-page animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <div class="func-photo-container">
+          <img src="barat.jpg" alt="Barat" class="func-img" onerror="this.style.display='none'">
+        </div>
+        <p class="func-date">Saturday, November 21, 2026</p>
+        <h2 class="func-name">Barat Departure</h2>
+        <p class="func-time">06:00 PM</p>
+        <p class="func-quote golden-line">"A joyous procession celebrating love marching forward."</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/BiodChKg8jqwnZPT9" target="_blank">📍 View Barat Assembly Map</a>
+      </div>
+
+      <!-- FUNCTION 7: WEDDING CEREMONY -->
+      <div class="card function-page animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <div class="func-photo-container">
+          <img src="wedding.jpg" alt="Wedding" class="func-img" onerror="this.style.display='none'">
+        </div>
+        <p class="func-date">Saturday, November 21, 2026</p>
+        <h2 class="func-name">Wedding Ceremony (Vivah Sanskar)</h2>
+        <p class="func-time">As per auspicious time (Shubh Lagna)</p>
+        <p class="func-quote white-line">"Two souls unite in sacred vows under the watchful heavens."</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/iEyx44U5suP4rnw47" target="_blank">📍 View Wedding Location Map</a>
+      </div>
+
+      <!-- FUNCTION 8: RECEPTION PARTY -->
+      <div class="card function-page animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <div class="func-photo-container">
+          <img src="reception.jpg" alt="Reception" class="func-img" onerror="this.style.display='none'">
+        </div>
+        <p class="func-date">Sunday, November 22, 2026</p>
+        <h2 class="func-name">Reception Party</h2>
+        <p class="func-time">07:30 PM</p>
+        <p class="func-quote golden-line">"Join us for an evening of warmth, dining, and celebration."</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/A89hRvUJ5mvAxgbo9" target="_blank">📍 View Home Location Map</a>
+      </div>
+
+      <!-- Section: THE PHOTO GALAXY (Restored 3-Photo Vertical Grid) -->
+      <div class="card center animate-section">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <p class="role-text" style="margin-bottom: 5px; color: #e8d8c8;">Memories Together</p>
+        <h2 class="section-title" style="margin-bottom: 25px;">The Gallery</h2
+h2 class="section-title" style="margin-bottom: 10px;">click photo to open</h2>
+
+        <div class="gallery-grid">
+          <!-- EXACTLY 3 Photos visible on the webpage -->
+          <div class="gallery-item full-width"><img src="gallery5.jpg" alt="Memory" class="gallery-img"></div>
+          <div class="gallery-item"><img src="gallery2.jpg" alt="Memory" class="gallery-img"></div>
+          <div class="gallery-item"><img src="gallery3.jpg" alt="Memory" class="gallery-img"></div>
+          
+          <!-- Hidden Photos for the Slider (They appear in full screen!) -->
+          <img src="gallery4.jpg" class="gallery-img hidden-img" style="display:none;" alt="Memory">
+          <img src="gallery5.jpg" class="gallery-img hidden-img" style="display:none;" alt="Memory">
+          <img src="gallery6.jpg" class="gallery-img hidden-img" style="display:none;" alt="Memory">
+        </div>
+      </div>
+
+      <!-- Section: RSVP (WhatsApp Integration) -->
+      <div class="card center animate-section" style="margin-bottom: 50px;">
+        <div class="ornate-corner top-left"></div>
+        <div class="ornate-corner top-right"></div>
+        <div class="ornate-corner bottom-left"></div>
+        <div class="ornate-corner bottom-right"></div>
+
+        <h2 class="section-title" style="margin-bottom: 20px;"> Wishes</h2>
+        
+        <!-- Updated Form specifically for WhatsApp -->
+        <form id="rsvpForm" class="rsvp-form">
+          <input type="text" id="guestName" placeholder="Your Full Name" required />
+          <input type="text" id="relation" placeholder="RELATION" required />
+          <textarea id="guestMessage" placeholder="Warm wishes or blessings..." rows="3"></textarea>
+          <button type="submit" class="btn-submit">Send</button>
         </form>
-      </section>
+      </div>
+      
     </div>
   </main>
+
+  <!-- Full Screen Photo Lightbox (Supports REAL Smooth Sliding) -->
+  <div id="lightbox" class="lightbox hidden">
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-prev">&#10094;</span>
+    <div class="lightbox-wrapper">
+      <div id="lightbox-track" class="lightbox-swipe-track">
+        <!-- Javascript automatically loads all sliding photos here -->
+      </div>
+    </div>
+    <span class="lightbox-next">&#10095;</span>
+  </div>
 
   <audio id="wedding-music" loop>
     <source src="song.mp3" type="audio/mpeg">
@@ -148,4 +314,5 @@
 
   <script src="script.js"></script>
 </body>
-</html>
+  </html>
+  
